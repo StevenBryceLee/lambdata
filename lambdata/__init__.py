@@ -6,5 +6,3 @@ import numpy as np
 
 Test = pd.DataFrame(np.ones(10))
 
-
-print('hello world')
