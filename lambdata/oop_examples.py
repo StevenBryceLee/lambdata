@@ -119,7 +119,7 @@ class Simulator:
         rowidx = 0
         colidx = 0
         #print(f'in botView, direction: {direction}')
-        for count,row in enumerate(wholeboard):
+        for count,row in enumerate(wholeGrid):
             if 'b' in row:
                 rowidx = count
                 colidx = row.index('b')
