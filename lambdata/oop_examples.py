@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
 
+# class bot:
+#     def __init__(self, fuel = 50, make):
+#         self.fuel = fuel
+
 class Simulator:
     '''
     This class simulates escaping from a maze from the POV of a bot
@@ -12,6 +16,12 @@ class Simulator:
     '''
 
     def nextMove(self, inputGrid):
+        '''
+        nextMove checks, based on the bot view of the grid, what the next move should be
+        inputGrid is a 3 x 3 matrix of the view from the POV of the bot
+
+        returns the direction in which the bot should move next as a string
+        '''
         inputarr = np.array(inputGrid)
         wall = ['#']*3
 
@@ -20,14 +30,14 @@ class Simulator:
             if 'e' in row.tolist():
                 rowidx = count
                 colidx = row.tolist().index('e')
+                if (rowidx == 2) & (row[1] != '#'):
+                    return 'DOWN'
                 if (rowidx == 0) & (row[1] != '#'):
                     return 'UP'
                 else:
                     return 'LEFT' if colidx == 0 else 'RIGHT'
                 if (rowidx == 1):
                     return 'LEFT' if colidx == 0 else 'RIGHT'
-                if (rowidx == 2) & (row[1] != '#'):
-                    return 'DOWN'
                 else:
                     return 'LEFT' if colidx == 0 else 'RIGHT'
 
