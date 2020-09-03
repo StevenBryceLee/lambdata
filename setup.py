@@ -12,7 +12,7 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name='lambdata-StevenBryceLee',
-    version='0.0.6',
+    version='0.0.7',
     author='StevenBryceLee',
     description='A collection of helper functions',
     long_description=LONG_DESCRIPTION,
