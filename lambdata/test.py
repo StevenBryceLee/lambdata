@@ -46,6 +46,41 @@ class TestMazeMethods(unittest.TestCase):
         for count, grid in enumerate(grids):
             self.assertEqual(self.sim.nextMove(grid), directions[count])
 
+    def test_next_move_wall(self):
+        '''Tests to make sure that the bot can find the wall'''
+        inputGrid = [
+                    ['#', '#', '#'],
+                    ['-', 'b', '-'],
+                    ['-', '-', '-']
+                    ]
+        grids = [np.rot90(inputGrid,rotation) for rotation in np.arange(4)]
+        directions = ['RIGHT','UP','LEFT','DOWN']
+        for count, grid in enumerate(grids):
+            self.assertEqual(self.sim.nextMove(grid), directions[count])
+
+    def test_next_move_blocked(self):
+        '''Tests to make sure that the bot can move with a block in front'''
+        inputGrid = [
+                    ['-', '#', '-'],
+                    ['-', 'b', '-'],
+                    ['-', '-', '-']
+                    ]
+        grids = [np.rot90(inputGrid,rotation) for rotation in np.arange(4)]
+        directions = ['RIGHT','UP','UP','UP']
+        for count, grid in enumerate(grids):
+            self.assertEqual(self.sim.nextMove(grid), directions[count])
+
+    def test_next_move_final_boss(self):
+        '''Tests to make sure that the bot can escape a trap'''
+        inputGrid = [
+                    ['#', '#', '#'],
+                    ['#', 'b', '#'],
+                    ['#', '-', '#']
+                    ]
+        grids = [np.rot90(inputGrid,rotation) for rotation in np.arange(4)]
+        directions = ['DOWN','RIGHT','UP','LEFT']
+        for count, grid in enumerate(grids):
+            self.assertEqual(self.sim.nextMove(grid), directions[count])
 
 if __name__ == '__main__':
     unittest.main()
